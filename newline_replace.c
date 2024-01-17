@@ -13,7 +13,7 @@ void newline_replace(char **str)
 	while (s[x] != '\0')
 	{
 		if (s[x] == '\n')
-			s[x] = ''\0';
+			s[x] = '\0';
 		x++;
 	}
 }

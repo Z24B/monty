@@ -8,7 +8,7 @@
 #include <ctype.h>
 #include <fcntl.h>
 #include <sys/types.h>
-
+#include <sys/stat.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -50,14 +50,16 @@ typedef struct argument
 	char **input;
 } global_t;
 
-global_t global
+global_t global;
 
-
+void push(stack_t **stack, unsigned int cmdline);
+void pall(stack_t **stack, unsigned int cmdline);
 char **parse_instruct(char *pnt);
 void execute_opcode(stack_t **top, unsigned int num);
 void newline_replace(char **str);
-int empty_code(char **str);
+int blank_string(char **str);
 void free_dlistint(stack_t *head);
+int checker(char *num);
+void release_mem(FILE **source, char ***opcode, char act);
 
-
-#endif
+#endif /*MONTY_H*/

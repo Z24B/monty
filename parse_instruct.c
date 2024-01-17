@@ -11,7 +11,7 @@ char **parse_instruct(char *pnt)
 	char **tokens = NULL;
 	char *token = NULL;
 
-	if (pnt == '\0')
+	if (pnt == NULL)
 		return ('\0');
 	if (pnt[0] == '\0' || pnt[1] == '\0')
 		return ('\0');
@@ -22,7 +22,7 @@ char **parse_instruct(char *pnt)
 	if (tokens == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		release(NULL, NULL, 'r');
+		release_mem(NULL, NULL, 'r');
 		free(tokens);
 		exit(EXIT_FAILURE);
 	}

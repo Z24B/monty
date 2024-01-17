@@ -11,19 +11,6 @@ void execute_opcode(stack_t **top, unsigned int num)
 	instruction_t ops[] = {
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", mul},
-		{"mod", mod},
-		{"swap", swap},
-		{"rotl", rotl},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	int x;
@@ -41,7 +28,7 @@ void execute_opcode(stack_t **top, unsigned int num)
 		fprintf(stderr, "L%u: unknown instruction %s\n", num, global.input[0]);
 		free(global.input);
 		free_dlistint(*top);
-		release(NULL, NULL, 'r');
+		release_mem(NULL, NULL, 'r');
 		exit(EXIT_FAILURE);
 	}
 }

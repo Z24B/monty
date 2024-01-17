@@ -9,8 +9,8 @@ void free_dlistint(stack_t *head)
 {
 	stack_t *x;
 
-	if (head != '\0')
-		while (head != '\0')
+	if (head != NULL)
+		while (head != NULL)
 		{
 			x = head;
 			head = head->next;
