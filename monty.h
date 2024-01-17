@@ -57,5 +57,7 @@ char **parse_instruct(char *pnt);
 void execute_opcode(stack_t **top, unsigned int num);
 void newline_replace(char **str);
 int empty_code(char **str);
+void free_dlistint(stack_t *head);
+
 
 #endif
