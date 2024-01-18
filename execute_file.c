@@ -104,7 +104,8 @@ void opcode_command(char *opcode, stack_t **stack, unsigned int line, FILE *f)
 		{"pop", pop}, {"swap", swap},
 		{"add", add}, {"nop", nop},
 		{"sub", subop}, {"div", divop},
-		{"mul", mulop}, {NULL, NULL}};
+		{"mul", mulop}, {"mod", modop},
+		{NULL, NULL}};
 
 	while (opcodes[x].opcode != NULL)
 	{
