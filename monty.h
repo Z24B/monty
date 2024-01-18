@@ -52,6 +52,7 @@ void subop(stack_t **stack, unsigned int line_num);
 void divop(stack_t **stack, unsigned int line_num);
 void mulop(stack_t **stack, unsigned int line_num);
 void modop(stack_t **stack, unsigned int line_num);
+void pchar(stack_t **stack, unsigned int line_num);
 
 void read_file(FILE *mainf);
 void free_list(stack_t **head);
