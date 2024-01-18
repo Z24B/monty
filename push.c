@@ -1,40 +1,34 @@
 #include "monty.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 /**
- * push - adds a new node to the top of the stack
- * @stack: the stack
- * @cmdline: command line
+ * push - pushes an element to the stack
+ * @stack: pointer to the head node pointer
+ * @line: line number
+ * @arg: arguments
  * Return: void
  */
-void push(stack_t **stack, unsigned int cmdline)
+void push(stack_t **stack, unsigned int line, char *arg)
 {
-	stack_t *new, *temp;
+	stack_t *head = NULL;
 
-	if (global.input[1] == NULL || checker(global.input[1]) == -1)
+	if (stack == NULL)
 	{
-		fprintf(stderr, "L%i: usage: push integer\n", cmdline);
-		release_mem(NULL, NULL, 'r');
-		free_dlistint(*stack);
-		free(global.input);
+		fprintf(stderr, "L%d: Error stack not found\n", line);
 		exit(EXIT_FAILURE);
 	}
-	temp = *stack;
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	head = malloc(sizeof(stack_t));
+
+	if (head == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		release_mem(NULL, NULL, 'r');
-		free_dlistint(*stack);
-		free(global.input);
+		free_list(stack);
 		exit(EXIT_FAILURE);
 	}
-	new->next = '\0';
-	new->n = atoi(global.input[1]);
-	new->prev = '\0';
-	*stack = new;
-	new->next = temp;
-	if (temp != NULL)
-		temp->prev = new;
+	head->n = atoi(arg);
+	head->prev = NULL;
+	head->next = *stack;
+	if (*stack)
+		(*stack)->prev = head;
+
+	(*stack) = head;
 }

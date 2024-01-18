@@ -1,21 +1,20 @@
 #include "monty.h"
 
 /**
- * pall - prints all the values on the stack from the top
- * @stack: the stack
- * @cmdline: command line
+ * pall - prints all the values on the stack
+ * @stack:pointer to the head node pointer
+ * @line_num: line number
  * Return: void
  */
-void pall(stack_t **stack, unsigned int cmdline __attribute__((unused)))
+void pall(stack_t **stack, unsigned int line_num)
 {
-	stack_t *print;
+	stack_t *tmp;
+	(void)line_num;
 
-	print = *stack;
-	if (print == NULL)
-		return;
-	while (print != NULL)
+	tmp = *stack;
+	while (tmp)
 	{
-		printf("%i\n", print->n);
-		print = print->next;
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
 	}
 }

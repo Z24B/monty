@@ -1,14 +1,15 @@
 #ifndef MONTY_H
 #define MONTY_H
-#include <stdlib.h>
+
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include <stddef.h>
 #include <unistd.h>
 #include <ctype.h>
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <stdbool.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -40,26 +41,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/**
- * struct argument - organize & encapsulate relevant data for the Monty interpreter
- * @input: pointer to a pointer to a character
- * Description: global varible
- */
-typedef struct argument
-{
-	char **input;
-} global_t;
+void push(stack_t **stack, unsigned int line, char *arg);
+void pall(stack_t **stack, unsigned int line_num);
+void pint(stack_t **stack, unsigned int line_num);
+void pop(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void add(stack_t **stack, unsigned int line_num);
+void nop(stack_t **stack, unsigned int line_num);
+void subop(stack_t **stack, unsigned int line_num);
+void divop(stack_t **stack, unsigned int line_num);
+void mulop(stack_t **stack, unsigned int line_num);
+void modop(stack_t **stack, unsigned int line_num);
 
-global_t global;
-
-void push(stack_t **stack, unsigned int cmdline);
-void pall(stack_t **stack, unsigned int cmdline);
-char **parse_instruct(char *pnt);
-void execute_opcode(stack_t **top, unsigned int num);
-void newline_replace(char **str);
-int blank_string(char **str);
-void free_dlistint(stack_t *head);
-int checker(char *num);
-void release_mem(FILE **source, char ***opcode, char act);
-
-#endif /*MONTY_H*/
+void read_file(FILE *mainf);
+void free_list(stack_t **head);
+bool arg_push(char *arg);
+void opcode_command(char *opcode, stack_t **stack, unsigned int line, FILE *f);
+#endif
