@@ -41,6 +41,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
 void push(stack_t **stack, unsigned int line, char *arg);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
@@ -61,4 +62,5 @@ void read_file(FILE *mainf);
 void free_list(stack_t **head);
 bool arg_push(char *arg);
 void opcode_command(char *opcode, stack_t **stack, unsigned int line, FILE *f);
+
 #endif
