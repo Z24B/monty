@@ -101,7 +101,7 @@ void opcode_command(char *opcode, stack_t **stack, unsigned int line, FILE *f)
 	int x = 0;
 	instruction_t opcodes[] = {
 		{"pall", pall}, {"pint", pint},
-		{NULL, NULL}};
+		{"pop", pop},{NULL, NULL}};
 
 	while (opcodes[x].opcode != NULL)
 	{
