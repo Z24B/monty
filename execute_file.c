@@ -99,16 +99,18 @@ bool arg_push(char *arg)
 void opcode_command(char *opcode, stack_t **stack, unsigned int line, FILE *f)
 {
 	int x = 0;
-	instruction_t opcodes[] ={{"pall", pall},
+	instruction_t opcodes[] = {
+		{"pall", pall}, {"pint", pint},
 		{NULL, NULL}};
 
-	for ( ; x < 10; x++)
+	while (opcodes[x].opcode != NULL)
 	{
 		if (strcmp(opcodes[x].opcode, opcode) == 0)
 		{
 			opcodes[x].f(stack, line);
 			return;
 		}
+		x++;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
 	free(opcode);
